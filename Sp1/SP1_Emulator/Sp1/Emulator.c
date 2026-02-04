@@ -13,14 +13,14 @@ int main(int argc, char** argv) {
 	int calculation;
 
 	FILE* fptr = fopen(argv[1], "rb");
-	// Se o arquivo não for encontrato
+	//Se o arquivo nao for encontrato;
 	if (fptr == NULL) {
 		printf("Erro abrindo arquivo\n");
 		fclose(fptr);
 		return 1;
 	}
 
-	// Le o arquivo 2 bytes de cada vez e salva na memoria do programa
+	//Joga todo o conteudo do arquivo no array do programa;
 	fread(&program, sizeof(Instruction) * 256, 1, fptr);
 	fclose(fptr);
 
@@ -79,7 +79,6 @@ int main(int argc, char** argv) {
 				calculation = acc - 1;
 				statusFlags(&status, calculation);
 				acc--;
-				//printf("%d, %d, %d\n", acc, calculation, status);
 				break;
 
 			case AND:
@@ -135,6 +134,9 @@ int main(int argc, char** argv) {
 				break;
 
 			case HALT:
+				printf("Acumulador = %d\n", acc);
+				printf("Status = %d\n", status);
+				printf("PC = %d\n", pc);
 				printf("Program halted.\n");
 				return 0;
 
