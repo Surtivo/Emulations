@@ -3,11 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1 Assembler\\test.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Emulator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|solutionrelative:Sp1\\Emulator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|solutionrelative:Sp1\\Functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0D0BD394-F42C-4AB8-9042-D6F977D65120}|Sp1\\Sp1.vcxproj|solutionrelative:Sp1\\Functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,30 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "test.asm",
-              "DocumentMoniker": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1 Assembler\\test.asm",
-              "RelativeDocumentMoniker": "..\\SP1 Assembler\\test.asm",
-              "ToolTip": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1 Assembler\\test.asm",
-              "RelativeToolTip": "..\\SP1 Assembler\\test.asm",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-02-04T19:47:08.355Z",
+              "DocumentIndex": 1,
+              "Title": "Functions.h",
+              "DocumentMoniker": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.h",
+              "RelativeDocumentMoniker": "Sp1\\Functions.h",
+              "ToolTip": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.h",
+              "RelativeToolTip": "Sp1\\Functions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T20:10:52.735Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Functions.c",
+              "DocumentMoniker": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.c",
+              "RelativeDocumentMoniker": "Sp1\\Functions.c",
+              "ToolTip": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Functions.c",
+              "RelativeToolTip": "Sp1\\Functions.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-02-04T19:58:20.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Emulator.c",
               "DocumentMoniker": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Emulator.c",
               "RelativeDocumentMoniker": "Sp1\\Emulator.c",
               "ToolTip": "C:\\Users\\emanu\\source\\repos\\Emulations\\Sp1\\SP1_Emulator\\Sp1\\Emulator.c",
               "RelativeToolTip": "Sp1\\Emulator.c",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-02-04T18:43:59.473Z",
               "EditorCaption": ""
