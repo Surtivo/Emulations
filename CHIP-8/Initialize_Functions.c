@@ -83,6 +83,7 @@ bool Initialize_chip (Chip8 *chip, const char *rom_name){
 
     chip->state = RUNNING;
     chip->PC = entry_point;
+    chip->stack_pointer = &chip->stack[0];
     chip->rom_name = rom_name;
     
     return true;

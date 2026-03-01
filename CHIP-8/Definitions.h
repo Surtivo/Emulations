@@ -11,24 +11,20 @@
 #define CLEAR 0b11100000
 #define SUB_CALL_RET 0b11101110
 #define JUMP_NNN 0b00000001
-// #define UNIM 0b00000010
-// #define UNIM 0b00000011
-// #define UNIM 0b00000100
-// #define UNIM 0b00000101
-#define SET_V 0b00000110
+#define SUB_CALL_NNN 0b00000010
+#define VX_EAQUAL_NN_SKIP 0b00000011
+#define VX_NOTEQUAL_NN_SKIP 0b00000100
+#define VX_EQUAL_VY_SKIP 0b00000101
+#define SET_VX_NN 0b00000110
 #define ADD 0b00000111
-// #define UNIM 0b00001000
-// #define UNIM 0b00001001
+#define SET_VX 0b00001000
+#define VX_NOTEAQUAL_VY_SKIP 0b00001001
 #define SET_I 0b00001010
-// #define UNIM 0b00001011
-// #define UNIM 0b00001100
+#define JUMP_NNN_V0 0b00001011
+#define RAND 0b00001100
 #define DRAW 0b00001101
-// #define UNIM 0b00001110
-// #define UNIM 0b00001111
-// #define UNIM 0b00010000
-// #define UNIM 0b00010001
-// #define UNIM 0b00010010
-// #define UNIM 0b00010011
+#define KEY_VX 0b00001110
+#define OUTRO 0b00001111
 
 #define TWELVE_BIT_MASK 0b111111111111
 #define EIGHT_BIT_MASK 0b11111111
@@ -73,11 +69,13 @@ typedef struct{
     const char *rom_name;
     bool key_pad [16];
     bool display [64*32];
+    bool keypad[16];
     __uint8_t memory [4096];
     __uint8_t V[16];
     __uint8_t delay_timer;
     __uint8_t sound_timer;
     __uint16_t stack[12];
+    __uint16_t *stack_pointer;
     __uint16_t PC;
     __uint16_t I;    
 }Chip8;

@@ -1,8 +1,10 @@
 #include "Initialize_Functions.h"
 #include "Clear_Functions.h"
 #include "Emulator_Functions.h"
+#include <time.h>
 
 int main(int argc, char **argv){
+    srand(time(NULL));
 
     //Default Usage message for args;
     if (argc < 2) {
@@ -40,20 +42,19 @@ int main(int argc, char **argv){
     while(chip.state != QUIT){
         input_handler(&chip);
 
-        if(chip.state == PAUSED){
-            continue;
+        if(chip.state == RUNNING){
+            for(int i = 0; i < 10; i++) {
+                emulate_instruction(&chip, config);
+            }
+            update_timers(&chip, &SDL);
         }
 
-        emulate_instruction(&chip, config);
-
-        SDL_Delay(17);
         update_screen(&chip, config, &SDL);
         SDL_RenderPresent(SDL.Renderer);
+        SDL_Delay(16);
     }
 
-    bool test = true;
-    printf("Terminou a Execucao! %ld\n", sizeof(test));
-
+    update_timers(&chip, &SDL);
     clean_up(&SDL);
     exit(EXIT_SUCCESS);
 }   
