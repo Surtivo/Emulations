@@ -19,6 +19,6 @@ There's still room for improvement, but I'll probably leave it as it is.
 Didn't bother to make sound part. Maybe some time later...
 
 ### Credits:
-All the ROM files were get from users Timendus(#https://github.com/Timendus/chip8-test-suite/tree/main) and kripod(#https://github.com/kripod/chip8-roms/tree/master). 
+All the ROM files were get from users [Timendus](https://github.com/Timendus/chip8-test-suite/tree/main) and [kripod](https://github.com/kripod/chip8-roms/tree/master). 
 
 A very much thank to both!
