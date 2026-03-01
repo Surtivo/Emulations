@@ -43,7 +43,7 @@ int main(int argc, char **argv){
         input_handler(&chip);
 
         if(chip.state == RUNNING){
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < INST_PER_FRAME; i++){            //Emulate 10 instructions per frame;
                 emulate_instruction(&chip, config);
             }
             update_timers(&chip, &SDL);
@@ -51,9 +51,9 @@ int main(int argc, char **argv){
 
         update_screen(&chip, config, &SDL);
         SDL_RenderPresent(SDL.Renderer);
-        SDL_Delay(16);
-    }
-
+        SDL_Delay(16);                              //Approximately 60Hz / FPS;
+    }                                               //Could be improved by using a more accurate timer, and don't have even more delay if the emulation is running too slow,
+                                                    // but for now it works fine;
     update_timers(&chip, &SDL);
     clean_up(&SDL);
     exit(EXIT_SUCCESS);
