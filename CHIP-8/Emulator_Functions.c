@@ -91,8 +91,7 @@ void input_handler(Chip8 *chip){
 
 void emulate_instruction (Chip8 *chip, Win_config config){
 
-    __uint16_t calculation;
-    __uint8_t auxiliary;
+    bool carry;
     chip->instruction.opcode = ( chip->memory[ chip->PC ] << 8) | ( chip->memory[ chip->PC + 1 ] );
     chip->PC += 2;
 
@@ -152,7 +151,7 @@ void emulate_instruction (Chip8 *chip, Win_config config){
             printf("--- JUMP ---\n");  
             break;
         
-        case SET_VX_NN:                                                                     //Set V[x] = NN;
+        case SET_VX_NN:                                                                 //Set V[x] = NN;
             chip->V[chip->instruction.x] = chip->instruction.NN;
             printf("--- V[x] ---\n");
             break;  
@@ -172,54 +171,54 @@ void emulate_instruction (Chip8 *chip, Win_config config){
                 
                 case 1:
                     chip->V[chip->instruction.x] |= chip->V[chip->instruction.y];
+                    chip->V[0b1111] = 0;                                                //Instruction reset to zero;
                     printf("--- VX |= VY ---\n");
                     break;
                 
                 case 2:
                     chip->V[chip->instruction.x] &= chip->V[chip->instruction.y];
+                    chip->V[0b1111] = 0;                                                //Instruction reset to zero;
                     printf("--- VX &= VY ---\n");
                     break;
                 
                 case 3:
                     chip->V[chip->instruction.x] ^= chip->V[chip->instruction.y];
+                    chip->V[0b1111] = 0;                                                //Instruction reset to zero;
                     printf("--- VX ^= VY ---\n");
                     break;
                 
                 case 4:
-                    calculation = chip->V[chip->instruction.x] + chip->V[chip->instruction.y];
-                    if(calculation > 255){
-                        chip->V[0b1111] = 1;
-                    }else    chip->V[0b1111] = 0;
-
+                    carry = ((__uint16_t)chip->V[chip->instruction.x] + chip->V[chip->instruction.y] > 255);
                     chip->V[chip->instruction.x] += chip->V[chip->instruction.y];
+                    chip->V[0b1111] = carry;
                     printf("--- VX += VY ---\n");
                     break;
                 
                 case 5:
-                    if(chip->V[chip->instruction.x] >= chip->V[chip->instruction.y]){
-                        chip->V[0b1111] = 1;
-                    }else chip->V[0b1111] = 0;
+                    carry = (chip->V[chip->instruction.x] >= chip->V[chip->instruction.y]);
                     chip->V[chip->instruction.x] -= chip->V[chip->instruction.y];
+                    chip->V[0b1111] = carry;
                     printf("--- VX -= VY ---\n");
                     break;
                 
                 case 6:
-                    chip->V[0b1111] = chip->V[chip->instruction.x] & 0b01;
+                    carry = ((chip->V[chip->instruction.x] & 0b01) == 1);
                     chip->V[chip->instruction.x] >>= 1;
+                    chip->V[0b1111] = carry;
                     printf("--- VX >> 1 ---\n");
                     break;
                 
                 case 7:
-                    if(chip->V[chip->instruction.y] >= chip->V[chip->instruction.x]){
-                        chip->V[0b1111] = 1;
-                    }else chip->V[0b1111] = 0;
+                    carry = (chip->V[chip->instruction.y] >= chip->V[chip->instruction.x]);
                     chip->V[chip->instruction.x] = chip->V[chip->instruction.y] - chip->V[chip->instruction.x];
+                    chip->V[0b1111] = carry;
                     printf("--- VX = VY - VX ---\n");
                     break;
 
                 case 14: 
-                    chip->V[0xF] = (chip->V[chip->instruction.x] >> 7) & 0x1;
+                    carry = (((chip->V[chip->instruction.x] >> 7) & 0x1) == 1);
                     chip->V[chip->instruction.x] <<= 1;
+                    chip->V[0xF] = carry;
                     break;
                 
                 default:
@@ -235,8 +234,8 @@ void emulate_instruction (Chip8 *chip, Win_config config){
             break;
         
         case JUMP_NNN_V0:
-            chip->PC = chip->V[0] + chip->instruction.NNN;
-            printf("--- JUMP V[0] + NNN ---\n");
+            chip->PC = chip->V[0] + chip->instruction.NNN;                               //Does not use V[x];
+            printf("--- JUMP V[0] + NNN ---\n");       
             break;
         
         case RAND:
@@ -326,11 +325,11 @@ void emulate_instruction (Chip8 *chip, Win_config config){
                     break;
 
                 case 30:
-                    if (chip->I + chip->V[chip->instruction.x] > 0xFFF) {
-                        chip->V[0xF] = 1;
-                    } else {
-                        chip->V[0xF] = 0;
-                    }
+                    // if (chip->I + chip->V[chip->instruction.x] > 0xFFF) {
+                    //     chip->V[0xF] = 1;
+                    // } else {
+                    //     chip->V[0xF] = 0;
+                    // }
                     chip->I += chip->V[chip->instruction.x];
                     break;
 
@@ -351,13 +350,13 @@ void emulate_instruction (Chip8 *chip, Win_config config){
 
                 case 85:
                     for(__uint8_t i = 0; i <= chip->instruction.x; i++) {
-                        chip->memory[chip->I + i] = chip->V[i];
+                        chip->memory[chip->I++] = chip->V[i];                   //For BC_test work it has to increment index with i variable;
                     }
                     break;
 
                 case 101:
                     for(__uint8_t i = 0; i <= chip->instruction.x; i++) {
-                        chip->V[i] = chip->memory[chip->I + i];
+                        chip->V[i] = chip->memory[chip->I++];                   //For BC_test work it has to increment index with i variable;
                     }
                     break;
                 default:
